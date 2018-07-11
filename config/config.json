@@ -1,0 +1,55 @@
+{
+  "production": {
+    "app": {
+      "port": 7070
+    },
+    "seeds": false,
+    "database": "sender-prod",
+    "username": "postgres",
+    "password": "123",
+    "host": "db",
+    "dialect": "postgres",
+    "define": {
+      "underscored": true
+    },
+    "services": {
+      "auth": {
+        "jwt": {
+          "secret": "sender_28_10_1994_dima_manhura"
+        }
+      },
+      "templates": {
+        "host": "sender.dev",
+        "host_api": "http://api.sender.dev",
+        "protocol": "https"
+      }
+    },
+    "cloudinary" : {
+      "cloud_name": "dvicfzbxc",
+      "api_key": "668242767938443",
+      "api_secret": "ggNW5QJb_9BK_Q2Ejd_4cjiq0L4"
+    }
+  },
+  "development": {
+    "database": "sender-dev",
+    "username": "postgres",
+    "password": "123",
+    "host": "localhost",
+    "dialect": "postgres",
+    "define": {
+      "underscored": true
+    },
+    "services": {
+      "auth": {
+        "jwt": {
+          "secret": "sender_28_10_1994_dima_manhura"
+        }
+      },
+      "templates": {
+        "host": "sender.dev",
+        "host_api": "http://api.sender.dev",
+        "protocol": "http"
+      }
+    }
+  }
+}
