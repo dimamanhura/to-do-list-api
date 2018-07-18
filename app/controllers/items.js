@@ -22,6 +22,15 @@ module.exports = {
       res.sendStatus(500).json(err);
     }
   },
+  getItemById: async (req, res) => {
+    try {
+      const item = await models.Items.findById(req.params.id);
+
+      res.json(item);
+    } catch (err) {
+      res.sendStatus(500).json(err);
+    }
+  },
   updateItem: async (req, res) => {
     try {
       const { title, completed } = req.body;

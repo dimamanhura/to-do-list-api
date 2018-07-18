@@ -4,6 +4,7 @@ const Routers = {
   // items
   'items POST': 'addItem',
   'items GET': 'getItems',
+  'items/:id GET': 'getItemById',
   'items/:id POST': 'updateItem',
   'items/:id DELETE': 'deleteItem'
 };
