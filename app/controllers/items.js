@@ -10,7 +10,7 @@ module.exports = {
 
       res.json(newItem);
     } catch (err) {
-      res.json({ errors: [err] });
+      res.sendStatus(500).json(err);
     }
   },
   getItems: async (req, res) => {
@@ -19,7 +19,7 @@ module.exports = {
 
       res.json(items);
     } catch (err) {
-      res.json({ errors: [err] });
+      res.sendStatus(500).json(err);
     }
   },
   updateItem: async (req, res) => {
@@ -31,7 +31,7 @@ module.exports = {
 
       res.json(updatedItem);
     } catch (err) {
-      res.json({ errors: [err] });
+      res.sendStatus(500).json(err);
     }
   },
   deleteItem: async (req, res) => {
@@ -40,7 +40,7 @@ module.exports = {
 
       res.json(removedItem);
     } catch (err) {
-      res.json({ errors: [err] });
+      res.sendStatus(500).json(err);
     }
   },
 };
