@@ -15,7 +15,23 @@ module.exports = {
   },
   getItems: async (req, res) => {
     try {
-      const items = await models.Items.find({});
+      const offset = +req.query.offset || 0;
+      const limit = +req.query.limit || 100000000000000000;
+      const search = req.query.search || '';
+      const completed = req.query.completed === 'true';
+
+      const where = {
+        title: new RegExp(search, 'i')
+      };
+
+      if (req.query.completed) {
+        where.completed = completed;
+      }
+
+      const items = await models.Items.find(where)
+        .sort({ created: -1 })
+        .skip(offset)
+        .limit(limit);
 
       res.json(items);
     } catch (err) {
