@@ -32,8 +32,9 @@ module.exports = {
         .sort({ created: -1 })
         .skip(offset)
         .limit(limit);
+      const count = await models.Items.count(where);
 
-      res.json(items);
+      res.json({ items, count });
     } catch (err) {
       res.sendStatus(500).json(err);
     }
