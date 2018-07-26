@@ -6,7 +6,9 @@ const Routers = {
   'items GET': 'getItems',
   'items/:id GET': 'getItemById',
   'items/:id POST': 'updateItem',
-  'items/:id DELETE': 'deleteItem'
+  'items/:id DELETE': 'deleteItem',
+  // users
+  'users/register POST': 'registerUser'
 };
 
 module.exports = () => {

@@ -1,55 +1,19 @@
 {
   "production": {
     "app": {
-      "port": 7070
+      "port": 7676
     },
     "seeds": false,
-    "database": "sender-prod",
-    "username": "postgres",
-    "password": "123",
-    "host": "db",
-    "dialect": "postgres",
-    "define": {
-      "underscored": true
+    "database": "mongodb://localhost/db-test-todo",
+    "session-secret": "test",
+    "facebook": {
+      "clientID": 1874565742612200,
+      "clientSecret": "f3196a531600e58080ee6c4ffb277043"
     },
-    "services": {
-      "auth": {
-        "jwt": {
-          "secret": "sender_28_10_1994_dima_manhura"
-        }
-      },
-      "templates": {
-        "host": "sender.dev",
-        "host_api": "http://api.sender.dev",
-        "protocol": "https"
-      }
-    },
-    "cloudinary" : {
-      "cloud_name": "dvicfzbxc",
-      "api_key": "668242767938443",
-      "api_secret": "ggNW5QJb_9BK_Q2Ejd_4cjiq0L4"
-    }
+    "website-url": "http://localhost:3000"
   },
   "development": {
-    "database": "sender-dev",
-    "username": "postgres",
-    "password": "123",
-    "host": "localhost",
-    "dialect": "postgres",
-    "define": {
-      "underscored": true
-    },
-    "services": {
-      "auth": {
-        "jwt": {
-          "secret": "sender_28_10_1994_dima_manhura"
-        }
-      },
-      "templates": {
-        "host": "sender.dev",
-        "host_api": "http://api.sender.dev",
-        "protocol": "http"
-      }
-    }
+    "database": "mongodb://localhost/db-test-todo",
+    "website-url": "http://localhost:3000"
   }
 }

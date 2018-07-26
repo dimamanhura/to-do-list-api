@@ -13,7 +13,8 @@ const schema = mongoose.Schema({
   created: {
     type: Date,
     default: Date.now
-  }
+  },
+  author: { type: mongoose.Schema.Types.ObjectId, ref: 'Users' }
 });
 
 module.exports = mongoose.model('Items', schema);

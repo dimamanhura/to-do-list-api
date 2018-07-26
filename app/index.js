@@ -4,11 +4,32 @@ const cookieParser = require('cookie-parser');
 const multer = require('multer');
 const path = require('path');
 const cors = require('cors');
-
+const session = require('express-session');
+const passport = require('passport');
+const MongoStore = require('connect-mongo')(session);
+const config = require('../config')(process.env.NODE_ENV);
+const authStrategies = require('./services/passport');
 const routers = require('./routers');
 const db = require('./models');
 const PORT = 7676;
 const app = express();
+const ctrls = require('./controllers/users');
+
+app.use(session({
+  secret: config['session-secret'],
+  store: new MongoStore({ url: config.database })
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+// auth
+passport.use(authStrategies.local);
+passport.use(authStrategies.facebook);
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+passport.deserializeUser((user, done) => {
+  done(null, user);
+});
 
 app.use(express.static(__dirname));
 app.use(express.static('static'));
@@ -18,13 +39,20 @@ app.use(cookieParser());
 app.use(multer({ dest: 'uploads/' }).any());
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Authorization, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
   next();
 });
 
 const router = routers();
 app.use(router);
+
+// Auth routes
+app.post('/auth/local', passport.authenticate('local'), ctrls.authLocal);
+app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'] }));
+app.get('/auth/facebook/callback', passport.authenticate('facebook'), ctrls.authSocial);
+app.post('/auth/logout', ctrls.logout);
+app.post('/auth/user', ctrls.getAuth);
 
 db.connect().then(() => {
   const server = app.listen(PORT, (err) => {

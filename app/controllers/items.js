@@ -3,9 +3,10 @@ const models = require('../models');
 module.exports = {
   addItem: async (req, res) => {
     try {
-      const { title, completed } = req.body;
+      const { title, completed, author } = req.body;
+
       const newItem = await models.Items.create({
-        title, completed
+        title, completed, author
       });
 
       res.json(newItem);
@@ -30,6 +31,7 @@ module.exports = {
 
       const items = await models.Items.find(where)
         .sort({ created: -1 })
+        .populate(['author'])
         .skip(offset)
         .limit(limit);
       const count = await models.Items.count(where);
@@ -41,7 +43,7 @@ module.exports = {
   },
   getItemById: async (req, res) => {
     try {
-      const item = await models.Items.findById(req.params.id);
+      const item = await models.Items.findById(req.params.id).populate(['author']);
 
       res.json(item);
     } catch (err) {
