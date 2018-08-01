@@ -11,7 +11,7 @@ const config = require('../config')(process.env.NODE_ENV);
 const authStrategies = require('./services/passport');
 const routers = require('./routers');
 const db = require('./models');
-const PORT = 7676;
+const PORT = 7070;
 const app = express();
 const ctrls = require('./controllers/users');
 
@@ -24,6 +24,7 @@ app.use(passport.session());
 // auth
 passport.use(authStrategies.local);
 passport.use(authStrategies.facebook);
+passport.use(authStrategies.instagram);
 passport.serializeUser((user, done) => {
   done(null, user);
 });
@@ -51,6 +52,8 @@ app.use(router);
 app.post('/auth/local', passport.authenticate('local'), ctrls.authLocal);
 app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'] }));
 app.get('/auth/facebook/callback', passport.authenticate('facebook'), ctrls.authSocial);
+app.get('/auth/instagram', passport.authenticate('instagram'));
+app.get('/auth/instagram/callback', passport.authenticate('instagram'), ctrls.authSocial);
 app.post('/auth/logout', ctrls.logout);
 app.post('/auth/user', ctrls.getAuth);
 

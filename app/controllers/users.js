@@ -28,14 +28,7 @@ module.exports = {
   },
   authLocal: async (req, res) => {
     try {
-      console.log('------------------------------------');
-      console.log(req.user);
-      console.log('------------------------------------');
       const token = await JWT.createTokens(req.user);
-
-      console.log('------------------------------------');
-      console.log(token);
-      console.log('------------------------------------');
 
       res.json(Object.assign({}, req.user, { token }));
     } catch (err) {
@@ -44,7 +37,7 @@ module.exports = {
   },
   authSocial: async (req, res) => {
     try {
-      const { token } = await JWT.createTokens(req.user);
+      const token = await JWT.createTokens(req.user);
 
       res.redirect(`${config['website-url']}/?isSocialAuth=true&token=${token}&type=0`);
     } catch (err) {

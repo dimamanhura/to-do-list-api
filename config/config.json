@@ -1,7 +1,7 @@
 {
   "production": {
     "app": {
-      "port": 7676
+      "port": 7070
     },
     "seeds": false,
     "database": "mongodb://localhost/db-test-todo",
@@ -9,6 +9,10 @@
     "facebook": {
       "clientID": 880146345502849,
       "clientSecret": "ba1b3d994a0d32134bb93c2525e5b248"
+    },
+    "instagram": {
+      "clientID": "9573b2c1ed934186b20f703153b5eec8",
+      "clientSecret": "81a1b6a3aa914372a21ad5c67a0d4ebf"
     },
     "website-url": "http://localhost:3000"
   },

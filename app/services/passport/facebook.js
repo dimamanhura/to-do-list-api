@@ -29,7 +29,7 @@ const facebookStrategyCallback = async (accessToken, refreshToken, profile, done
 module.exports = (new FacebookStrategy({
   clientID: config.facebook.clientID,
   clientSecret: config.facebook.clientSecret,
-  callbackURL: 'http://localhost:7676/auth/facebook/callback',
+  callbackURL: 'http://localhost:7070/auth/facebook/callback',
   profileFields: ['id', 'displayName', 'emails', 'photos']
 }, facebookStrategyCallback));
 
