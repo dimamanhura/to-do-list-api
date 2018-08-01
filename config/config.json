@@ -7,8 +7,8 @@
     "database": "mongodb://localhost/db-test-todo",
     "session-secret": "test",
     "facebook": {
-      "clientID": 226550221523055,
-      "clientSecret": "5f309ab5624d92cbf9c39ef0034040b5"
+      "clientID": 880146345502849,
+      "clientSecret": "ba1b3d994a0d32134bb93c2525e5b248"
     },
     "website-url": "http://localhost:3000"
   },
