@@ -7,6 +7,7 @@ const cors = require('cors');
 const session = require('express-session');
 const passport = require('passport');
 const MongoStore = require('connect-mongo')(session);
+const socketIO = require('socket.io');
 const config = require('../config')(process.env.NODE_ENV);
 const authStrategies = require('./services/passport');
 const routers = require('./routers');
@@ -14,6 +15,7 @@ const db = require('./models');
 const PORT = 7070;
 const app = express();
 const ctrls = require('./controllers/users');
+const socketService = require('./services/sockets');
 
 app.use(session({
   secret: config['session-secret'],
@@ -61,6 +63,18 @@ db.connect().then(() => {
   const server = app.listen(PORT, (err) => {
     if (err) throw err;
     console.log(`Server listen port ${PORT}`);
+  });
+
+  const io = socketIO(server);
+  io.on('connection', (socket) => {
+    socket.on(socketService.ADD_ITEM, async (data) => {
+      try {
+        const newItem = await socketService.addItem(data);
+        socket.emit(socketService.ADD_ITEM_SUCCESSFULLY, newItem);
+      } catch (err) {
+        socket.emit(socketService.ADD_ITEM_WITH_ERROR, err);
+      }
+    });
   });
 }).catch((err) => {
   console.error(err);
