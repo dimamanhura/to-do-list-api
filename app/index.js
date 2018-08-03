@@ -70,9 +70,9 @@ db.connect().then(() => {
     socket.on(socketService.ADD_ITEM, async (data) => {
       try {
         const newItem = await socketService.addItem(data);
-        socket.emit(socketService.ADD_ITEM_SUCCESSFULLY, newItem);
+        io.emit(socketService.ADD_ITEM_SUCCESSFULLY, newItem);
       } catch (err) {
-        socket.emit(socketService.ADD_ITEM_WITH_ERROR, err);
+        io.emit(socketService.ADD_ITEM_WITH_ERROR, err);
       }
     });
   });
