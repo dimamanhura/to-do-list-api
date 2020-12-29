@@ -26,13 +26,12 @@ yarn
 ```sh
 # Install MongoDB with Homebrew
 brew tap mongodb/brew
-brew install mongodb-community
 
-# Create directory for MongoDB data
-mkdir -p ./data/mongo
+# Installing MongoDB 4.4 Community Edition
+brew install mongodb-community@4.4
 
-# Run MongoDB daemon process with path to data directory
-mongod --dbpath ./data/mongo
+# Run MongoDB Community Edition
+brew services start mongodb-community@4.4
 ```
 
 ### Run server
@@ -40,15 +39,15 @@ mongod --dbpath ./data/mongo
 ```sh
 yarn start
 # alias for
-nodemon ./app/index --watch
+node ./app/index
 ```
 
 ### Web Sockets
-| Event Name                | Event Type    | Params (On)        | Response (Emit) |
-| ------------------------- | ------------- |--------------      | --------------- |
-| ADD_ITEM                  | On            | title: string      |                 |
-| ADD_ITEM_SUCCESSFULLY     | Emit          |                    | Created TODO    |
-| ADD_ITEM_WITH_ERROR Cell  | Emit          |                    | Error           |
+| Event Name                | Event Type    | Params (On)    | Response (Emit) |
+| ------------------------- | ------------- |--------------  | --------------- |
+| ADD_ITEM                  | On            | title: string  |                 |
+| ADD_ITEM_SUCCESSFULLY     | Emit          |                | Created TODO    |
+| ADD_ITEM_WITH_ERROR Cell  | Emit          |                | Error           |
 
 ## Author
 Created and maintained by Dima Manhura ([@dimamanhura](https://www.linkedin.com/in/dima-manhura-889259144)).

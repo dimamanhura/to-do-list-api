@@ -21,7 +21,8 @@ const facebookStrategyCallback = async (accessToken, refreshToken, profile, done
     }
 
     return done(null, false);
-  } catch (err) {
+  }
+  catch (err) {
     return done(null, false);
   }
 };

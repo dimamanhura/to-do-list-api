@@ -1,17 +1,16 @@
-const express = require('express');
-const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const multer = require('multer');
-const path = require('path');
-const cors = require('cors');
+const bodyParser = require('body-parser');
+const express = require('express');
 const session = require('express-session');
-const passport = require('passport');
+const multer = require('multer');
 const MongoStore = require('connect-mongo')(session);
+const passport = require('passport');
 const socketIO = require('socket.io');
 const config = require('../config')(process.env.NODE_ENV);
 const authStrategies = require('./services/passport');
 const routers = require('./routers');
 const db = require('./models');
+
 const PORT = 7070;
 const app = express();
 const ctrls = require('./controllers/users');
@@ -71,7 +70,8 @@ db.connect().then(() => {
       try {
         const newItem = await socketService.addItem(data);
         io.emit(socketService.ADD_ITEM_SUCCESSFULLY, newItem);
-      } catch (err) {
+      }
+      catch (err) {
         io.emit(socketService.ADD_ITEM_WITH_ERROR, err);
       }
     });
