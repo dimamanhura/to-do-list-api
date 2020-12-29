@@ -41,7 +41,9 @@ yarn start
 # alias for
 node ./app/index
 ```
-
+## API Documentation
+Swagger: https://app.swaggerhub.com/apis-docs/dimamanhura/Todos-API/1.0.0#/Todos
+ 
 ### Web Sockets
 | Event Name                | Event Type    | Params (On)    | Response (Emit) |
 | ------------------------- | ------------- |--------------  | --------------- |
