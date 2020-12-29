@@ -2,7 +2,7 @@
 
 `TO-DO List app API` is REST API server implementation built on top `Node.js` and `Express.js` with `Mongoose.js` for `MongoDB` integration.
 
-This is updated code that follows [11 шагов как подготовить React Junior Developer к работе в проекте на примере TODO List app](https://aleksandrov.ws/2013/09/12/restful-api-with-nodejs-plus-mongodb) article.
+This is updated code that follows [11 шагов как подготовить React Junior Developer к работе в проекте на примере TODO List app](https://medium.com) article.
 
 ## Running project
 
