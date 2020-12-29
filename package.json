@@ -4,8 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start:dev": "NODE_ENV=development nodemon ./app/index --watch",
-    "start:prod": "NODE_ENV=production nodemon ./app/index --watch"
+    "start": "nodemon ./app/index --watch",
   },
   "dependencies": {
     "bcrypt": "^3.0.0",
@@ -35,8 +34,8 @@
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.12.0"
   },
-  "repository": "git@nix.githost.io:jsui-skillup/share-app-manhura.git",
-  "author": "Dmitriy Manhura <dmitriy.manhura@nixsolutions.com>",
+  "repository": "https://github.com/dimamanhura/todo_api",
+  "author": "Dmitriy Manhura <manguradima@gmail.com>",
   "eslintConfig": {
     "extends": "airbnb-base",
     "env": {
