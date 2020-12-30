@@ -50,13 +50,13 @@ const router = routers();
 app.use(router);
 
 // Auth routes
-app.post('/auth/local', passport.authenticate('local'), ctrls.authLocal);
+app.post('/auth', passport.authenticate('local'), ctrls.authLocal);
+app.delete('/auth', ctrls.logout);
+app.get('/auth', ctrls.getAuth);
 app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'] }));
 app.get('/auth/facebook/callback', passport.authenticate('facebook'), ctrls.authSocial);
 app.get('/auth/instagram', passport.authenticate('instagram'));
 app.get('/auth/instagram/callback', passport.authenticate('instagram'), ctrls.authSocial);
-app.post('/auth/logout', ctrls.logout);
-app.post('/auth/user', ctrls.getAuth);
 
 db.connect().then(() => {
   const server = app.listen(PORT, (err) => {

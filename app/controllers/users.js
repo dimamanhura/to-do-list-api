@@ -23,14 +23,17 @@ module.exports = {
 
       res.json({ ok: true });
     } catch (err) {
-      res.status(400).json(err.message || err);
+      res.status(500).json(err.message || err);
     }
   },
   authLocal: async (req, res) => {
     try {
       const token = await JWT.createTokens(req.user);
 
-      res.json(Object.assign({}, req.user, { token }));
+      res.json({
+        user: req.user,
+        token
+      });
     } catch (err) {
       res.status(400).json(err.message || err);
     }
@@ -55,13 +58,16 @@ module.exports = {
   },
   getAuth: async (req, res) => {
     try {
-      const token = req.body.token || req.query.token || req.headers['x-access-token'];
+      const token = req.query.token || req.headers['x-access-token'];
 
       if (token) {
         const decoded = await JWT.verifyToken(token);
         const user = await userService.getUserById(decoded._id);
 
-        res.json(Object.assign({}, user, { token: decoded.token }));
+        res.json({
+          user,
+          token: decoded.token
+        });
       }
 
       res.json({ user: false });
