@@ -2,7 +2,7 @@
 
 `TO-DO List app API` is REST API server implementation built on top `Node.js` and `Express.js` with `Mongoose.js` for `MongoDB` integration.
 
-This is updated code that follows [11 шагов как подготовить React Junior Developer к работе в проекте на примере TODO List app](https://aleksandrov.ws/2013/09/12/restful-api-with-nodejs-plus-mongodb) article.
+This is updated code that follows [12 шагов как подготовить React Junior Developer к работе в проекте на примере TODO List app](https://medium.com) article.
 
 ## Running project
 
@@ -41,13 +41,15 @@ yarn start
 # alias for
 node ./app/index
 ```
-
+## API Documentation
+Swagger: https://app.swaggerhub.com/apis-docs/dimamanhura/Todos-API/1.0.0#/Todos
+ 
 ### Web Sockets
-| Event Name                | Event Type    | Params (On)    | Response (Emit) |
-| ------------------------- | ------------- |--------------  | --------------- |
-| ADD_ITEM                  | On            | title: string  |                 |
-| ADD_ITEM_SUCCESSFULLY     | Emit          |                | Created TODO    |
-| ADD_ITEM_WITH_ERROR Cell  | Emit          |                | Error           |
+| Event Name                | Event Type    | Parameters (On)          | Response (Emit) |
+| ------------------------- | ------------- |------------------------- | --------------- |
+| ADD_ITEM                  | On            | title, completed, author |                 |
+| ADD_ITEM_SUCCESSFULLY     | Emit          |                          | Created todo    |
+| ADD_ITEM_WITH_ERROR Cell  | Emit          |                          | Error           |
 
 ## Author
 Created and maintained by Dima Manhura ([@dimamanhura](https://www.linkedin.com/in/dima-manhura-889259144)).
