@@ -26,7 +26,7 @@
     "passport-facebook": "^2.1.1",
     "passport-instagram": "^1.0.0",
     "passport-local": "^1.0.0",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.4.0"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
