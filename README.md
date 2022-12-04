@@ -1,4 +1,4 @@
-# TO-DO List app API 
+# TO-DO List API 
 
 `TO-DO List app API` is REST API server implementation built on top `Node.js` and `Express.js` with `Mongoose.js` for `MongoDB` integration. This API can help you create a to-do list app where user can create, update, delete todo and get a list of todos using different parameters. Also, this API makes it possible to register, login and logout a user.  
 
